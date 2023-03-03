@@ -85,14 +85,15 @@ public class PeopleService {
         System.out.println("appendFromBankForOneUser = " + formatter.format(appendFromBankForOneUser));
     }
 
-    public void sortPeople(int countMinPerson) {
+    public boolean sortPeople(int countMinPerson) {
         List<Person> sortedPeople = null;
         System.out.println("========================== SORTED LIST ============================");
         if(countMinPerson > people.size()){
             System.out.println("The number of people with a minimum cannot be more than the list");
-            countMinPerson = people.size();
+            return false;
         } else if (countMinPerson <= 0) {
             System.out.println("The number of people with a minimum cannot be less than 0");
+            return false;
         }
 
         if (people != null && (!people.isEmpty())) {
@@ -106,6 +107,7 @@ public class PeopleService {
             System.out.println(sortedPeople.get(i));
         }
         System.out.println("===================================================================");
+        return true;
     }
 
 }
