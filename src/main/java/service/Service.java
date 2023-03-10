@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
 public class Service {
     private Person person;
     private List<Person> people = new ArrayList<>();
-    private List<Person> sdPeople = new ArrayList<>();
     public Service() {
     }
 
@@ -32,9 +31,6 @@ public class Service {
         this.person = person;
     }
 
-    public List<Person> getSortedPeople() {
-        return sdPeople;
-    }
     public void addPerson(Person person) {
         if (people != null) {
             people.add(person);
