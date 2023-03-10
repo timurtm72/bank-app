@@ -1,13 +1,9 @@
-import models.Person;
-import service.PeopleService;
+import service.Service;
 
 public class Main {
     public static void main(String[] args) {
-        PeopleService service = new PeopleService(new Person());
-        service.InitPersons();
-        service.createPeople();
+        Service service = new Service();
+        service.readAndParsingFile();
         service.walletCalc();
-        service.printPeople();
-        service.sortPeople(3);
     }
 }

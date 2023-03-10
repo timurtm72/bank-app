@@ -1,29 +1,30 @@
 package models;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class Person {
     private String name;
-    private double wallet;
-    private double appendFromBank;
+    private BigDecimal wallet;
+    private BigDecimal appendFromBank;
 
-    private double walletAccount;
+    private static BigDecimal walletAccount;
 
     public Person() {
     }
 
-    public Person(String name, double wallet, double appendFromBank) {
+    public Person(String name, BigDecimal wallet, BigDecimal appendFromBank) {
         this.name = name;
         this.wallet = wallet;
         this.appendFromBank = appendFromBank;
     }
 
-    public double getWalletAccount() {
+    public static BigDecimal getWalletAccount() {
         return walletAccount;
     }
 
-    public void setWalletAccount(double walletAccount) {
-        this.walletAccount = walletAccount;
+    public static void setWalletAccount(BigDecimal walletAccount) {
+        Person.walletAccount = walletAccount;
     }
 
     public String getName() {
@@ -34,56 +35,27 @@ public class Person {
         this.name = name;
     }
 
-    public double getWallet() {
+    public BigDecimal getWallet() {
         return wallet;
     }
 
-    public void setWallet(double wallet) {
+    public void setWallet(BigDecimal wallet) {
         this.wallet = wallet;
     }
 
-    public double getAppendFromBank() {
+    public BigDecimal getAppendFromBank() {
         return appendFromBank;
     }
 
-    public void setAppendFromBank(double appendFromBank) {
+    public void setAppendFromBank(BigDecimal appendFromBank) {
         this.appendFromBank = appendFromBank;
     }
 
     @Override
     public String toString() {
-        DecimalFormat formatter = new DecimalFormat("#0.00");
         return "Person " +
                 "name = '" + name + '\'' +
                 ", wallet = " + wallet +
-                ", appendFromBank = " + formatter.format(appendFromBank);
+                ", appendFromBank = " + appendFromBank;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Person person = (Person) o;
-
-        if (Double.compare(person.wallet, wallet) != 0) return false;
-        if (Double.compare(person.appendFromBank, appendFromBank) != 0) return false;
-        if (Double.compare(person.walletAccount, walletAccount) != 0) return false;
-        return name.equals(person.name);
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = name.hashCode();
-        temp = Double.doubleToLongBits(wallet);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(appendFromBank);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(walletAccount);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
-    }
-
 }
